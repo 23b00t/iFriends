@@ -1,4 +1,8 @@
 class ImaginaryFriendsController < ApplicationController
+  def index
+    @imaginary_friends = ImaginaryFriend.all
+  end
+
   def new
     @imaginary_friend = ImaginaryFriend.new()
   end
