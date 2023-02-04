@@ -19,8 +19,7 @@ class ImaginaryFriendsController < ApplicationController
   end
 
   def update
-    @imaginary_friend = ImaginaryFriend.new(params[:id])
-    if @imaginary_friend.save
+    if @imaginary_friend.update
       redirect_to imaginary_friend_path(@imaginary_friend)
     else
       render :new, status: :unprocessable_entity
