@@ -10,9 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_04_131124) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_04_140835) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookings", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "imaginary_friend_id", null: false
+    t.integer "approved"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["imaginary_friend_id"], name: "index_bookings_on_imaginary_friend_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "imaginary_friends", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name"
+    t.string "description"
+    t.string "special_abilities"
+    t.boolean "rented"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_imaginary_friends_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -28,4 +50,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_04_131124) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookings", "imaginary_friends"
+  add_foreign_key "bookings", "users"
+  add_foreign_key "imaginary_friends", "users"
 end
