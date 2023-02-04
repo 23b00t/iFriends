@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :imaginary_friends do
-    resources :bookings
+    resources :bookings, only: %i[create index]
   end
 end

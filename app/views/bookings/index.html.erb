@@ -1,0 +1,14 @@
+<h1>Your Bookings</h1>
+<%if @bks && user_signed_in? %>
+  <%@bks.each do |booking| %>
+    <h4>About This Booking</h4>
+    <ul>
+      <li>Imaginary Friend: <%=booking.imaginary_friend.name%></li>
+      <li>Owner: <%=booking.imaginary_friend.user%></li>
+      <li>Renter: <%=booking.user%></li>
+      <li>Price: <%=booking.imaginary_friend.price%></li>
+    </ul>
+  <%end%>
+<%else%>
+  <%= link_to "Please Sign In",  new_user_session_path%>
+<%end%>
