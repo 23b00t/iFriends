@@ -1,5 +1,5 @@
 class ImaginaryFriendsController < ApplicationController
-  before_action :set_ifriend
+  before_action :set_ifriend, only: %i[create update destroy]
 
   def index
     @imaginary_friends = ImaginaryFriend.all
