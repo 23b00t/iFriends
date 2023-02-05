@@ -1,17 +1,18 @@
+// product card
+
 .card-friend {
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  margin-bottom: 16px;
-  width: 308px;
   margin: 8px;
-  flex-grow: 1;
+  width: 240px;
+  // flex-grow: 1;
 }
 
 .card-friend > img {
   height: 200px;
   width: 100%;
-  object-fit: contain;
+  object-fit: cover;
   margin-top: 8px;
 }
 
@@ -26,7 +27,6 @@
   margin: 0;
 }
 
-
 .card-friend .card-friend-infos {
   padding: 16px;
   display: flex;
@@ -40,4 +40,26 @@
   right: 16px;
   top: -20px;
   width: 40px;
+}
+
+.card-friend a {
+  text-decoration: none;
+}
+
+// card category
+
+.card-category {
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin-bottom: 4px;
 }
