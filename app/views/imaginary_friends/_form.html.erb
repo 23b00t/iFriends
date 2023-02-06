@@ -1,0 +1,9 @@
+<%= simple_form_for imaginary_friend do |f| %>
+  <%= f.input :name, label: "Name", error: 'A name is mandatory, please specify one'%>
+  <%= f.input :description, label: "Description"%>
+  <%= f.input :special_abilities, lable: "Special Abilities", hint: "Special abilities you can choose from: Flying,
+                                                                    Warm hugs, Invisibility, Visibility, Cooking,
+                                                                    Great advice"%>
+  <%= f.input :price, label: "Price per day"%>
+  <%= f.button :submit%>
+<%end%>
