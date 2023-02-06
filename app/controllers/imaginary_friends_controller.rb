@@ -1,5 +1,5 @@
 class ImaginaryFriendsController < ApplicationController
-  before_action :set_ifriend, only: %i[update destroy show]
+  before_action :set_ifriend, only: %i[show update destroy]
 
   def index
     @imaginary_friends = ImaginaryFriend.all
@@ -11,8 +11,12 @@ class ImaginaryFriendsController < ApplicationController
     @imaginary_friend = ImaginaryFriend.new
   end
 
+  def show
+  end
+
   def create
     @imaginary_friend = ImaginaryFriend.new(ifriend_params)
+    @imaginary_friend.user = current_user
     if @imaginary_friend.save
       redirect_to imaginary_friend_path(@imaginary_friend)
     else

@@ -12,13 +12,18 @@
         <%# end %>
         <div class="card-friend-infos">
           <div>
-            <h2><%= link_to friend.name, imaginary_friend_path(friend) %></h2>
-            <p><%= friend.description %> </p>
+            <h2><%=friend.name %></h2>
+            <p><%=friend.description %> </p>
+            <p><%= link_to"Read more about this imaginary friend", imaginary_friend_path(friend)%></p>
           </div>
-          <h2 class="card-friend-pricing"><%= friend.price %> €</h2>
-          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-friend-user avatar-bordered" />
+          <h2 class="card-friend-pricing"><%=friend.price %> </h2>
+          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+          <%# What is this? %>
         </div>
       </div>
     <% end %>
+  </div>
+  <div>
+    <%= link_to "Add a new friend", new_imaginary_friend_path%>
   </div>
 </div>
