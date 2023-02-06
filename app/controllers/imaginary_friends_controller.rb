@@ -1,16 +1,20 @@
 class ImaginaryFriendsController < ApplicationController
-  before_action :set_ifriend, only: %i[create update destroy]
+  before_action :set_ifriend, only: %i[show update destroy]
 
   def index
     @imaginary_friends = ImaginaryFriend.all
   end
 
   def new
-    @imaginary_friend = ImaginaryFriend.new()
+    @imaginary_friend = ImaginaryFriend.new
+  end
+
+  def show
   end
 
   def create
     @imaginary_friend = ImaginaryFriend.new(ifriend_params)
+    @imaginary_friend.user = current_user
     if @imaginary_friend.save
       redirect_to imaginary_friend_path(@imaginary_friend)
     else
@@ -34,7 +38,7 @@ class ImaginaryFriendsController < ApplicationController
   private
 
   def set_ifriend
-    @booking = ImaginaryFriend.find(params[:id])
+    @imaginary_friend = ImaginaryFriend.find(params[:id])
   end
 
   def ifriend_params
