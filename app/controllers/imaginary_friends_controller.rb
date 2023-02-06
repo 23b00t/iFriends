@@ -5,6 +5,8 @@ class ImaginaryFriendsController < ApplicationController
     @imaginary_friends = ImaginaryFriend.all
   end
 
+  def show; end
+
   def new
     @imaginary_friend = ImaginaryFriend.new
   end
