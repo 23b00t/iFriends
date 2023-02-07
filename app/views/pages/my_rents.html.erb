@@ -2,14 +2,14 @@
 <p>Start browsing through our rentable imaginary friends here: <%= link_to "All i-friends for rent",
                                                                    imaginary_friends_path, class:"btn btn-primary ms-3 mt-2"%>
                                                                    <%= link_to "Friends that i renting",
-                                                                   "/my rents", class:"btn btn-primary ms-3 mt-2"%></p>
+                                                                   root_path, class:"btn btn-primary ms-3 mt-2"%></p>
 
 <div class="container">
   <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_url 'banner.jpg', alt: "Banner" %>)">
     My imaginary friends to rent
   </div>
   <div class="d-flex flex-wrap col-sm-12">
-    <% @imaginary_friends.each do |friend| %>
+    <% @rent_friends.each do |friend| %>
       <div class="card-friend">
         <%# if friend.photo.exist? %>
           <%#= image_tag friend.photo, alt: "Imaginary friend" %>
@@ -29,6 +29,6 @@
       </div>
     <% end %>
   </div>
-  <%= link_to "Add a new friend", new_imaginary_friend_path, class:"btn btn-primary ms-3 mt-2"%>
+  <%= link_to "rent a new friend", imaginary_friends_path, class:"btn btn-primary ms-3 mt-2"%>
 
 </div>
