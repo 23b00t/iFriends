@@ -11,9 +11,6 @@ class ImaginaryFriendsController < ApplicationController
     @imaginary_friend = ImaginaryFriend.new
   end
 
-  def show
-  end
-
   def create
     @imaginary_friend = ImaginaryFriend.new(ifriend_params)
     @imaginary_friend.user = current_user
