@@ -41,6 +41,6 @@ class ImaginaryFriendsController < ApplicationController
   end
 
   def ifriend_params
-    params.require(:imaginary_friend).permit(:name, :description, :price, :special_abilities, :rented)
+    params.require(:imaginary_friend).permit(:name, :description, :price, :special_abilities, :rented, :photo)
   end
 end
