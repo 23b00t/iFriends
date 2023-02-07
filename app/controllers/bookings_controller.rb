@@ -7,7 +7,7 @@ class BookingsController < ApplicationController
   end
 
   def index
-    @bks = ImaginaryFriend.find(imaginary_friend_id).bookings if ImaginaryFriend.exists?(params[:imaginary_friend_id])
+    @bks = ImaginaryFriend.find(params[:imaginary_friend_id]).bookings if ImaginaryFriend.exists?(params[:imaginary_friend_id])
   end
 
   private

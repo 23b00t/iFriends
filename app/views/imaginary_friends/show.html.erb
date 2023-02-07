@@ -1,16 +1,23 @@
-<h1>Imaginary Friend: <%=@imaginary_friend.name%></h1>
-<p>Description:</p>
-<p><%=@imaginary_friend.description%></p>
-<% if @imaginary_friend.special_abilities %>
-  <p>Special Abilities:</p>
-  <p><%=@imaginary_friend.special_abilities%></p>
-<%end%>
-<br>
+<div class="container">
+  <div class="d-flex justify-content-between">
+    <div class="d-flex flex row">
+      <h1>Imaginary Friend: <%=@imaginary_friend.name%></h1>
+      <p>Description:</p>
+      <p><%=@imaginary_friend.description%></p>
+      <% if @imaginary_friend.special_abilities %>
+        <p>Special Abilities:</p>
+        <p><%=@imaginary_friend.special_abilities%></p>
+      <%end%>
+      <br>
 
-<p>Rent this imaginary friend for only:</p>
-<p><%=@imaginary_friend.price%>€ / day!</p>
-<%# <%= link_to 'Book Now', bookings_path%>
+      <p>Rent this imaginary friend for only:</p>
+      <p><%=@imaginary_friend.price%>€ / day!</p>
+    </div>
+    <%= cl_image_tag @imaginary_friend.photo.key, class:"card-friend" if @imaginary_friend.photo.attached? %>
+  </div>
+  <%# <%= link_to 'Book Now', bookings_path%>
 
+<<<<<<< HEAD
 <%= link_to 'Back to list', imaginary_friends_path%>
 <% if current_user == @imaginary_friend.user%>
   <br>
@@ -25,3 +32,13 @@
           imaginary_friend_path(@imaginary_friend),
           data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
 <%end%>
+=======
+  <%= link_to 'Back to list', imaginary_friends_path, class:"btn btn-primary mb-2 mt-4"%>
+  <% if current_user == @imaginary_friend.user%>
+    <br>
+        <%= link_to "Remove this imaginary friend",
+            imaginary_friend_path(@imaginary_friend),
+            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-primary" %>
+  <%end%>
+</div>
+>>>>>>> fdc0f6df4922d018326d6d08f031dc38245bd583
