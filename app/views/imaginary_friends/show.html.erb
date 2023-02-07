@@ -18,3 +18,10 @@
           imaginary_friend_path(@imaginary_friend),
           data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
 <%end%>
+
+<% unless current_user == @imaginary_friend.user%>
+  <br>
+      <%= link_to "Rent this imaginary friend",
+          imaginary_friend_path(@imaginary_friend),
+          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+<%end%>

@@ -2,8 +2,7 @@ class ImaginaryFriendsController < ApplicationController
   before_action :set_ifriend, only: %i[show update destroy]
 
   def index
-    #IN THE LIST OF ALL FRIENDS USER CAN SEE ONLY OTHER USERS FRIENDS
-    @imaginary_friends = ImaginaryFriend.all.reject { |friend| friend.user_id == current_user.id }
+    @imaginary_friends = ImaginaryFriend.all
   end
 
   def show; end
