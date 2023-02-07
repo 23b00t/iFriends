@@ -2,7 +2,7 @@
 <p>Start browsing through our rentable imaginary friends here: <%= link_to "All i-friends for rent",
                                                                    imaginary_friends_path, class:"btn btn-primary ms-3 mt-2"%>
                                                                    <%= link_to "Friends that i renting",
-                                                                   "/my rents", class:"btn btn-primary ms-3 mt-2"%></p>
+                                                                   root_path, class:"btn btn-primary ms-3 mt-2"%></p>
 
 <div class="container">
   <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/1000445/pexels-photo-1000445.jpeg)">
@@ -30,6 +30,6 @@
       </div>
     <% end %>
   </div>
-  <%= link_to "Add a new friend", new_imaginary_friend_path, class:"btn btn-primary ms-3 mt-2"%>
+  <%= link_to "rent a new friend", imaginary_friends_path, class:"btn btn-primary ms-3 mt-2"%>
 
 </div>
