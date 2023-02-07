@@ -17,7 +17,7 @@
   </div>
   <%# <%= link_to 'Book Now', bookings_path%>
 
-<<<<<<< HEAD
+
 <%= link_to 'Back to list', imaginary_friends_path%>
 <% if current_user == @imaginary_friend.user%>
   <br>
@@ -32,7 +32,7 @@
           imaginary_friend_path(@imaginary_friend),
           data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
 <%end%>
-=======
+
   <%= link_to 'Back to list', imaginary_friends_path, class:"btn btn-primary mb-2 mt-4"%>
   <% if current_user == @imaginary_friend.user%>
     <br>
@@ -41,4 +41,3 @@
             data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-primary" %>
   <%end%>
 </div>
->>>>>>> fdc0f6df4922d018326d6d08f031dc38245bd583
