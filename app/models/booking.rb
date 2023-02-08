@@ -1,5 +1,5 @@
 class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :imaginary_friend
-  enum approved: %i[pending approved denied]
+  enum approved: %i[pending approved denied], _default: :pending
 end

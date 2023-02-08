@@ -6,7 +6,9 @@ class ImaginaryFriendsController < ApplicationController
     @imaginary_friends = ImaginaryFriend.all.reject { |friend| friend.user_id == current_user.id }
   end
 
-  def show; end
+  def show
+    @booking = Booking.new
+  end
 
   def new
     @imaginary_friend = ImaginaryFriend.new
