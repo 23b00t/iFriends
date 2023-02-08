@@ -26,6 +26,7 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = Booking.all.select { |booking| booking.imaginary_friend.user == current_user }
+    @rents = Booking.all.select { |booking| booking.user == current_user }
   end
 
   private
