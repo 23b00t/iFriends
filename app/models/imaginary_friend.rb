@@ -1,7 +1,7 @@
 class ImaginaryFriend < ApplicationRecord
   has_one_attached :photo
   belongs_to :user
-  has_many :bookings
+  has_many :bookings, dependent: :delete_all
   validates :name, presence: true
   validates :name, uniqueness: { scope: :user_id }
   validates :price, presence: true
