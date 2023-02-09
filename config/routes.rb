@@ -4,7 +4,10 @@ Rails.application.routes.draw do
 
   get "/my rents", to: "home#my_rents"
 
-  resources :imaginary_friends do
-    resources :bookings, only: %i[create index]
+  resources :imaginary_friends
+  resources :bookings, only: %i[create index show] do
+    member do
+      get :accept, :decline
+    end
   end
 end

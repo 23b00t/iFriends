@@ -15,7 +15,12 @@
     </div>
     <%= cl_image_tag @imaginary_friend.photo.key, class:"card-friend" if @imaginary_friend.photo.attached? %>
   </div>
-  <%# <%= link_to 'Book Now', bookings_path%>
+
+  <%= simple_form_for @booking do |f| %>
+    <%= f.hidden_field :imaginary_friend_id, value: @imaginary_friend.id %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.button :submit %>
+  <% end %>
 
 
 <%= link_to 'Back to list', imaginary_friends_path%>
