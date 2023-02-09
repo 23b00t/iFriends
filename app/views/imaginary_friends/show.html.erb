@@ -16,16 +16,6 @@
     <%= cl_image_tag @imaginary_friend.photo.key, class:"card-friend" if @imaginary_friend.photo.attached? %>
   </div>
 
-  <% unless @imaginary_friend.user == current_user %>
-    <%= simple_form_for @booking do |f| %>
-      <%= f.hidden_field :imaginary_friend_id, value: @imaginary_friend.id %>
-      <%= f.hidden_field :user_id, value: current_user.id %>
-      <%= f.button :submit, class:"btn btn-primary"%>
-    <% end %>
-  <%else%>
-    <%= link_to 'Edit this friend', edit_imaginary_friend_path, class:"btn btn-primary mb-2 mt-4"%>
-  <%end%>
-  <br>
   <%= link_to 'Back to list', imaginary_friends_path(@imaginary_friend), class:"btn btn-primary mb-2 mt-4"%>
   <% if current_user == @imaginary_friend.user%>
     <br>
@@ -33,4 +23,17 @@
             imaginary_friend_path(@imaginary_friend),
             data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-primary" %>
   <%end%>
+
+  <% unless @imaginary_friend.user == current_user %>
+    <%= simple_form_for @booking do |f| %>
+      <%= f.hidden_field :imaginary_friend_id, value: @imaginary_friend.id %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.button :submit, class:"btn btn-primary"%>
+    <% end %>
+    <%= render 'new_review', imaginary_friend: @imaginary_friend %>
+  <%else%>
+    <%= link_to 'Edit this friend', edit_imaginary_friend_path, class:"btn btn-primary mb-2 mt-4"%>
+  <%end%>
+  <br>
+  <br>
 </div>
