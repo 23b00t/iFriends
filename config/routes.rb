@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
 
-  get "/my rents", to: "pages#rent_friends"
+  get "my_rents", to: "pages#rents", as: :rents
 
   resources :imaginary_friends
   resources :bookings, only: %i[create index show] do
