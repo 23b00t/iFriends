@@ -1,0 +1,26 @@
+.card-review {
+  border-radius: 5px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin-bottom: 16px;
+  width: 100%;
+  margin: 8px;
+}
+
+.review-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.review-box {
+  padding: 8px;
+  width: 50%;
+}
+
+@media only screen and (max-width: 767px) {
+  .review-box {
+    width: 100%;
+  }
+}
