@@ -4,6 +4,7 @@ class PagesController < ApplicationController
     @imaginary_friends = ImaginaryFriend.all.select { |m| m.user_id == current_user.id }
   end
   def rent_friends
-    
+    bookings = Booking.all.select { |m| m.user_id == current_user.id }
+    @rent_friends = bookings.map{ |booking| booking.imaginary_friend }
   end
 end
