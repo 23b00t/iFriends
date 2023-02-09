@@ -1,16 +1,23 @@
-<div class="container">
-  <h1>Your Bookings</h1>
-  <%if @bks && user_signed_in? %>
-    <%@bks.each do |booking| %>
-      <h4>About This Booking</h4>
-      <ul>
-        <li>Imaginary Friend: <%=booking.imaginary_friend.name%></li>
-        <li>Owner: <%=booking.imaginary_friend.user%></li>
-        <li>Renter: <%=booking.user%></li>
-        <li>Price: <%=booking.imaginary_friend.price%></li>
-      </ul>
-    <%end%>
-  <%else%>
-    <%= link_to "Please Sign In",  new_user_session_path%>
-  <%end%>
-</div>
+<h4>Bookings of your iFriends</h4>
+<%@bookings.each do |booking| %>
+  <ul>
+    <li>Imaginary Friend: <%=booking.imaginary_friend.name%></li>
+    <li>Renter: <%=booking.user.email %></li>
+    <li>Price: <%=booking.imaginary_friend.price%></li>
+    <li>Status: <%= booking.approved %></li>
+    <% if booking.pending? %>
+      <%= link_to 'Accept booking', accept_booking_path(booking)  %>
+      <%= link_to 'Decline booking', decline_booking_path(booking)  %>
+    <% end %>
+  </ul>
+<% end %>
+
+<h4>Your requests and rents</h4>
+<%@rents.each do |rent| %>
+  <ul>
+    <li>Imaginary Friend: <%=rent.imaginary_friend.name%></li>
+    <li>Owner: <%=rent.imaginary_friend.user.email %></li>
+    <li>Price: <%=rent.imaginary_friend.price%></li>
+    <li>Status: <%= rent.approved %></li>
+  </ul>
+<% end %>
