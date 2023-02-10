@@ -1,0 +1,36 @@
+<div class="review-container">
+  <div class="review-box">
+    <h3>Share your thoughts!</h3>
+    <%= simple_form_for [imaginary_friend, Review.new()] do |f| %>
+      <%= f.input :comment %>
+      <%= f.input :rating, collection: (1..5).to_a,
+      label: "Rate your experience", input_html: {data: {controller: "star-rating"}} %>
+      <%= f.submit 'Add', class: "btn-ghost", style: "width: 120px" %>
+    <% end %>
+  </div>
+  <div class="review-box">
+      <div class="w-100">
+        <h3 style="text-align: center">Reviews</h3>
+      </div>
+      <ul class="w-100">
+        <% imaginary_friend.reviews.each do |review| %>
+          <li class="mb-2 d-flex flex-wrap card-review">
+            <div class="w-100" data-controller="star-rating">
+              <% review.rating.times do %>
+                <i class="fa-solid fa-star" style="color: #F49D1A"></i>
+              <% end %>
+              <small class="text-muted">posted <%= time_ago_in_words(review.created_at) %> ago</small>
+            </div>
+            <div class="w-100">
+              <%= review.comment %>
+            </div>
+            <% if review.user == current_user%>
+              <%= link_to "Delete your review",
+                          imaginary_friend_review_path(review),
+                          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-primary" %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+  </div>
+</div>
