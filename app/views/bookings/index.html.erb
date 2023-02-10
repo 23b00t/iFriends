@@ -1,14 +1,16 @@
 <h4>Bookings of your iFriends</h4>
 <%@bookings.each do |booking| %>
   <ul>
-    <li>Imaginary Friend: <%=booking.imaginary_friend.name%></li>
-    <li>Renter: <%=booking.user.email %></li>
-    <li>Price: <%=booking.imaginary_friend.price%></li>
-    <li>Date: from: <%= booking.start_date %> to: <%= booking.end_date %></li>
-    <li>Status: <%= booking.approved %></li>
-    <% if booking.pending? %>
-      <%= link_to 'Accept booking', accept_booking_path(booking)  %>
-      <%= link_to 'Decline booking', decline_booking_path(booking)  %>
+    <% unless booking.denied? %>
+      <li>Imaginary Friend: <%=booking.imaginary_friend.name%></li>
+      <li>Renter: <%=booking.user.email %></li>
+      <li>Price: <%=booking.imaginary_friend.price%></li>
+      <li>Date: from: <%= booking.start_date %> to: <%= booking.end_date %></li>
+      <li>Status: <%= booking.approved %></li>
+      <% if booking.pending? %>
+        <%= link_to 'Accept booking', accept_booking_path(booking)  %>
+        <%= link_to 'Decline booking', decline_booking_path(booking)  %>
+      <% end %>
     <% end %>
   </ul>
 <% end %>

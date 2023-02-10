@@ -4,8 +4,16 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    @booking.save
-    redirect_to imaginary_friend_path(:imaginary_friend_id), notice: "Booking requested."
+    @imaginary_friend = ImaginaryFriend.find(params[:booking][:imaginary_friend_id])
+
+    if @booking.save
+      @imaginary_friend.booked ||= []
+      @imaginary_friend.booked << [params[:booking][:start_date], params[:booking][:end_date]]
+      @imaginary_friend.save
+      redirect_to imaginary_friend_path(:imaginary_friend_id), notice: "Booking requested."
+    else
+      render 'imaginary_friends/show', status: :unprocessable_entity
+    end
   end
 
   def show
