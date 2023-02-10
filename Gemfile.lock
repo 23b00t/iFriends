@@ -83,6 +83,8 @@ GEM
     bindex (0.8.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
+    bootstrap-datepicker-rails (1.9.0.1)
+      railties (>= 3.0)
     builder (3.2.4)
     capybara (3.38.0)
       addressable
@@ -227,8 +229,6 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    simple_calendar (2.4.3)
-      rails (>= 3.0)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -276,6 +276,7 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   bootsnap
+  bootstrap-datepicker-rails
   capybara
   cloudinary
   debug
@@ -289,7 +290,6 @@ DEPENDENCIES
   rails (~> 7.0.4, >= 7.0.4.2)
   sassc-rails
   selenium-webdriver
-  simple_calendar (~> 2.4)
   simple_form!
   sprockets-rails
   stimulus-rails

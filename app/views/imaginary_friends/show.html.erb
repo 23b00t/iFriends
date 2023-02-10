@@ -26,23 +26,36 @@
   <%end%>
 
   <% unless @imaginary_friend.user == current_user %>
-    <%= calendar do |calendar| %>
-      <%= calendar.day do |day| %>
-        <% if day.events.count > 0 %>
-          <% day.events.each do |event| %>
-            <%= event.start_date.strftime("%B %d, %Y") %> -
-            <%= event.end_date.strftime("%B %d, %Y") %>
-          <% end %>
-        <% end %>
-      <% end %>
       <%= simple_form_for @booking do |f| %>
         <%= f.hidden_field :imaginary_friend_id, value: @imaginary_friend.id %>
         <%= f.hidden_field :user_id, value: current_user.id %>
-        <%= f.input :start_date, as: :string, input_html: { class: "datepicker" } %>
-        <%= f.input :end_date, as: :string, input_html: { class: "datepicker" } %>
-        <%= f.button :submit %>
+        <div class="form-group">
+          <%= f.label :start_date, "Start date" %>
+          <div class="input-group date" id="start-date-picker">
+            <%= f.text_field :start_date, class: "form-control" %>
+            <div class="input-group-append">
+              <span class="input-group-text">
+                <i class="fa fa-calendar"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :end_date, "End date" %>
+          <div class="input-group date" id="end-date-picker">
+            <%= f.text_field :end_date, class: "form-control" %>
+            <div class="input-group-append">
+              <span class="input-group-text">
+                <i class="fa fa-calendar"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <%= f.button :submit, class:"btn btn-primary" %>
       <% end %>
-    <% end %>
+
     <%= render 'new_review', imaginary_friend: @imaginary_friend %>
   <%else%>
     <%= link_to 'Edit this friend', edit_imaginary_friend_path, class:"btn btn-primary mb-2 mt-4"%>

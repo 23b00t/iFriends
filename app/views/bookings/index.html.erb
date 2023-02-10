@@ -4,6 +4,7 @@
     <li>Imaginary Friend: <%=booking.imaginary_friend.name%></li>
     <li>Renter: <%=booking.user.email %></li>
     <li>Price: <%=booking.imaginary_friend.price%></li>
+    <li>Date: from: <%= booking.start_date %> to: <%= booking.end_date %></li>
     <li>Status: <%= booking.approved %></li>
     <% if booking.pending? %>
       <%= link_to 'Accept booking', accept_booking_path(booking)  %>
