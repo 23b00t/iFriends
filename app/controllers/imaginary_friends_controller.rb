@@ -3,13 +3,17 @@ class ImaginaryFriendsController < ApplicationController
 
   def index
     @imaginary_friends = ImaginaryFriend.all
+    
+    # @markers = @imaginary_friends.geocoded.map do |flat|
+    #   {
+    #     lat: flat.latitude,
+    #     lng: flat.longitude
+    #   }
+    # end
+  end
 
-    @markers = @imaginary_friends.geocoded.map do |friend|
-      {
-        lat: friend.latitude,
-        lng: friend.longitude
-      }
-    end
+  def my_friends_index
+    @imaginary_friends = ImaginaryFriend.all.select { |friend| friend.user == current_user }
   end
 
   def show
