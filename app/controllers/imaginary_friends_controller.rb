@@ -19,7 +19,6 @@ class ImaginaryFriendsController < ApplicationController
         start_date += 1.day
       end
     end
-
   end
 
   def new

@@ -26,6 +26,9 @@
   <%end%>
 
   <% unless @imaginary_friend.user == current_user %>
+    <div data-controller="calendar" data-calendar-dates-value= <%= @disabled_dates %> >
+    <%= @disabled_dates %>
+
       <%= simple_form_for @booking do |f| %>
         <%= hidden_field_tag :disabled_dates, value: @disabled_dates %>
         <%= f.hidden_field :imaginary_friend_id, value: @imaginary_friend.id %>
@@ -56,7 +59,7 @@
 
         <%= f.button :submit, class:"btn btn-primary" %>
       <% end %>
-
+    </div>
     <%= render 'new_review', imaginary_friend: @imaginary_friend %>
   <%else%>
     <%= link_to 'Edit this friend', edit_imaginary_friend_path, class:"btn btn-primary mb-2 mt-4"%>
