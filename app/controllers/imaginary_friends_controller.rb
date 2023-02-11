@@ -3,13 +3,14 @@ class ImaginaryFriendsController < ApplicationController
 
   def index
     @imaginary_friends = ImaginaryFriend.all
-    
-    # @markers = @imaginary_friends.geocoded.map do |flat|
-    #   {
-    #     lat: flat.latitude,
-    #     lng: flat.longitude
-    #   }
-    # end
+
+    @markers = @imaginary_friends.geocoded.map do |friend|
+      {
+        lat: friend.latitude,
+        lng: friend.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: { friend: friend })
+      }
+    end
   end
 
   def my_friends_index
@@ -56,6 +57,6 @@ class ImaginaryFriendsController < ApplicationController
   end
 
   def ifriend_params
-    params.require(:imaginary_friend).permit(:name, :description, :price, :special_abilities, :rented, :photo)
+    params.require(:imaginary_friend).permit(:name, :description, :price, :special_abilities, :rented, :photo, :address)
   end
 end
