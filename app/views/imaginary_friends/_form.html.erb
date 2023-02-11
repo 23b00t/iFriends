@@ -1,9 +1,7 @@
 <%= simple_form_for imaginary_friend do |f| %>
   <%= f.input :name, label: "Name", error: 'A name is mandatory, please specify one'%>
   <%= f.input :description, label: "Description"%>
-  <%= f.input :special_abilities, lable: "Special Abilities", hint: "Special abilities you can choose from: Flying,
-                                                                    Warm hugs, Invisibility, Visibility, Cooking,
-                                                                    Great advice"%>
+  <%= f.input :special_abilities, collection: %w[Flying Warm\ Hugs Invisibility Visibility Cooking Great\ Advice] %>
   <%= f.input :price, label: "Price per day"%>
   <%= f.input :photo, as: :file, label: "Upload a Photo" %>
   <%= f.button :submit%>
