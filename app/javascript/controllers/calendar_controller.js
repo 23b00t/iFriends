@@ -11,17 +11,18 @@ export default class extends Controller {
   static targets = [ "startDatePicker", "endDatePicker" ]
 
   connect() {
-    console.log(this.datesValue)
     $(this.startDatePickerTarget).datepicker({
-      format: "dd-mm-yyyy",
+      format: "yyyy-mm-dd",
       todayHighlight: true,
-      datesDisabled: ["2023-02-17"]
+      datesDisabled: this.datesValue,
+      startDate: new Date()
     });
 
     $(this.endDatePickerTarget).datepicker({
-      format: "dd-mm-yyyy",
+      format: "yyyy-mm-dd",
       todayHighlight: true,
-      datesDisabled: this.datesValue
+      datesDisabled: this.datesValue,
+      startDate: new Date()
     });
   }
 }
