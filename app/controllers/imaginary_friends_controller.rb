@@ -4,10 +4,10 @@ class ImaginaryFriendsController < ApplicationController
   def index
     @imaginary_friends = ImaginaryFriend.all
 
-    @markers = @imaginary_friends.geocoded.map do |flat|
+    @markers = @imaginary_friends.geocoded.map do |friend|
       {
-        lat: flat.latitude,
-        lng: flat.longitude
+        lat: friend.latitude,
+        lng: friend.longitude
       }
     end
   end
