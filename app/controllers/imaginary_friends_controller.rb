@@ -1,5 +1,5 @@
 class ImaginaryFriendsController < ApplicationController
-  before_action :set_ifriend, only: %i[show update destroy]
+  before_action :set_ifriend, only: %i[show update destroy edit]
 
   def index
     @imaginary_friends = ImaginaryFriend.all
@@ -23,8 +23,10 @@ class ImaginaryFriendsController < ApplicationController
     end
   end
 
+  def edit; end
+
   def update
-    if @imaginary_friend.update
+    if @imaginary_friend.update(ifriend_params)
       redirect_to imaginary_friend_path(@imaginary_friend)
     else
       render :new, status: :unprocessable_entity
