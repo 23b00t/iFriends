@@ -6,7 +6,8 @@ import 'bootstrap-datepicker';
 $(function () {
   $('#start-date-picker').datepicker({
     format: "dd-mm-yyyy",
-    todayHighlight: true
+    todayHighlight: true,
+    datesDisabled: JSON.parse($('input[name="disabled_dates"]').val())
   });
 });
 

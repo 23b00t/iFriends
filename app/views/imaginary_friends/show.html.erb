@@ -27,6 +27,7 @@
 
   <% unless @imaginary_friend.user == current_user %>
       <%= simple_form_for @booking do |f| %>
+        <%= hidden_field_tag :disabled_dates, value: @disabled_dates %>
         <%= f.hidden_field :imaginary_friend_id, value: @imaginary_friend.id %>
         <%= f.hidden_field :user_id, value: current_user.id %>
         <div class="form-group">
