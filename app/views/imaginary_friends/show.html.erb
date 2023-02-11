@@ -18,26 +18,6 @@
 
   <%= link_to 'Back to list', imaginary_friends_path(@imaginary_friend), class:"btn btn-primary mb-2 mt-4"%>
 
-<<<<<<< HEAD
-
-<%= link_to 'Back to list', imaginary_friends_path%>
-<% if current_user == @imaginary_friend.user%>
-  <br>
-      <%= link_to "Remove this imaginary friend",
-          imaginary_friend_path(@imaginary_friend),
-          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-<%end%>
-
-<% unless current_user == @imaginary_friend.user%>
-  <br>
-      <%= link_to "Rent this imaginary friend",
-          imaginary_friend_path(@imaginary_friend),
-          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-<%end%>
-
-  <%= link_to 'Back to list', imaginary_friends_path, class:"btn btn-primary mb-2 mt-4"%>
-=======
->>>>>>> ec2793a0fbd27bfb20d8c93b0a727382ecdfdf21
   <% if current_user == @imaginary_friend.user%>
     <br>
         <%= link_to "Remove this imaginary friend",
