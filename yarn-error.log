@@ -1,5 +1,5 @@
 Arguments: 
-  /home/nx/.nvm/versions/node/v16.15.1/bin/node /home/nx/.nvm/versions/node/v16.15.1/bin/yarn add boostrap-datepicker
+  /home/nx/.nvm/versions/node/v16.15.1/bin/node /home/nx/.nvm/versions/node/v16.15.1/bin/yarn add flatpicker
 
 PATH: 
   ./bin:./node_modules/.bin:/home/nx/.rbenv/shims:/home/nx/.rbenv/bin:./bin:./node_modules/.bin:/home/nx/.nvm/versions/node/v16.15.1/bin:/home/nx/.rbenv/shims:/home/nx/.rbenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/local/sbin:/usr/local/sbin
@@ -14,7 +14,7 @@ Platform:
   linux x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/boostrap-datepicker: Not found
+  Error: https://registry.yarnpkg.com/flatpicker: Not found
       at Request.params.callback [as _callback] (/home/nx/.nvm/versions/node/v16.15.1/lib/node_modules/yarn/lib/cli.js:66145:18)
       at Request.self.callback (/home/nx/.nvm/versions/node/v16.15.1/lib/node_modules/yarn/lib/cli.js:140890:22)
       at Request.emit (node:events:527:28)
