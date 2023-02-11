@@ -1,7 +1,7 @@
 <h1>Welcome to i-friends!</h1>
 <p>Start browsing through our rentable imaginary friends here: <%= link_to "All i-friends for rent",
                                                                    imaginary_friends_path, class:"btn btn-primary ms-3 mt-2"%>
-                                                                   <%= link_to "Friends that i renting",
+                                                                   <%= link_to "Back to my friends",
                                                                    root_path, class:"btn btn-primary ms-3 mt-2"%></p>
 
 <div class="container">
@@ -9,7 +9,7 @@
     Our imaginary friends to rent
   </div>
   <div class="d-flex flex-wrap col-sm-12">
-    <% @imaginary_friends.each do |friend| %>
+    <% @rent_friends.each do |friend| %>
       <div class="card-friend">
         <% if friend.photo.attached? %>
           <%= cl_image_tag friend.photo.key, crop: :fill %>
@@ -31,5 +31,4 @@
     <% end %>
   </div>
   <%= link_to "rent a new friend", imaginary_friends_path, class:"btn btn-primary ms-3 mt-2"%>
-
 </div>
