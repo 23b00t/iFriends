@@ -16,21 +16,22 @@
     <%= cl_image_tag @imaginary_friend.photo.key, class:"card-friend" if @imaginary_friend.photo.attached? %>
   </div>
 
-  <%= link_to 'Back to list', imaginary_friends_path(@imaginary_friend), class:"btn btn-primary mb-2 mt-4"%>
+  <%= link_to 'Back to list', imaginary_friends_path(@imaginary_friend), class:"btn btn-primary mb-4"%>
 
   <% if current_user == @imaginary_friend.user%>
     <br>
         <%= link_to "Remove this imaginary friend",
             imaginary_friend_path(@imaginary_friend),
-            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-primary" %>
+            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-primary mb-4" %>
   <%end%>
 
   <% unless @imaginary_friend.user == current_user %>
-    <div data-controller="calendar" data-calendar-dates-value="<%= @disabled_dates.to_json %>" >
+    <h3>Book now</h3>
+    <div data-controller="calendar" data-calendar-dates-value="<%= @disabled_dates.to_json %>" class="mb-4">
       <%= simple_form_for @booking do |f| %>
         <%= f.hidden_field :imaginary_friend_id, value: @imaginary_friend.id %>
         <%= f.hidden_field :user_id, value: current_user.id %>
-        <div class="form-group">
+        <div class="form-group w-50">
           <%= f.label :start_date, "Start date" %>
           <div class="input-group date" id="start-date-picker" data-calendar-target="startDatePicker">
             <%= f.text_field :start_date, class: "form-control" %>
@@ -41,7 +42,7 @@
             </div>
           </div>
         </div>
-        <div class="form-group">
+        <div class="form-group w-50">
           <%= f.label :end_date, "End date" %>
           <div class="input-group date" id="end-date-picker" data-calendar-target="endDatePicker">
             <%= f.text_field :end_date, class: "form-control" %>
@@ -52,7 +53,7 @@
             </div>
           </div>
         </div>
-        <%= f.button :submit, class:"btn btn-primary" %>
+        <%= f.button :submit, class:"btn btn-primary mt-2" %>
       <% end %>
     </div>
     <%= render 'new_review', imaginary_friend: @imaginary_friend %>
