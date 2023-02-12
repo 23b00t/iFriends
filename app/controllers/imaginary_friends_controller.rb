@@ -9,16 +9,7 @@ class ImaginaryFriendsController < ApplicationController
   def show
     @booking = Booking.new
     @bookings = Booking.where('imaginary_friend_id = ?', params[:id]).approved
-    @disabled_dates = []
-    @bookings.each do |booking|
-      start_date = Date.parse(booking.start_date)
-      end_date = Date.parse(booking.end_date)
-
-      while start_date <= end_date
-        @disabled_dates << start_date.to_s
-        start_date += 1.day
-      end
-    end
+    @disabled_dates = booked_dates
   end
 
   def new
@@ -58,5 +49,19 @@ class ImaginaryFriendsController < ApplicationController
 
   def ifriend_params
     params.require(:imaginary_friend).permit(:name, :description, :price, :special_abilities, :rented, :photo)
+  end
+
+  def booked_dates
+    disabled_dates = []
+    @bookings.each do |booking|
+      start_date = Date.parse(booking.start_date)
+      end_date = Date.parse(booking.end_date)
+
+      while start_date <= end_date
+        disabled_dates << start_date.to_s
+        start_date += 1.day
+      end
+    end
+    disabled_dates
   end
 end
