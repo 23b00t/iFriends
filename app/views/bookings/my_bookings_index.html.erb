@@ -1,0 +1,9 @@
+<div class='container'>
+  <h4>Your pending and approved bookings</h4>
+  <% unless @bookings.nil? %>
+    <%= render "bookings", bookings: @bookings %>
+  <% else %>
+    <p>No bookings yet. <%= link_to "Check out all the imaginary friends you could have here!",
+                            imaginary_friends_path %>!</p>
+  <% end %>
+</div>
