@@ -8,7 +8,7 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to imaginary_friend_path(:imaginary_friend_id), notice: "Booking requested."
     else
-      redirect_to imaginary_friend_path(:imaginary_friend_id), notice: "Booking not possible."
+      redirect_to imaginary_friend_path(:imaginary_friend_id), alert: "Booking not possible."
     end
   end
 
@@ -25,7 +25,7 @@ class BookingsController < ApplicationController
   def decline
     @booking = Booking.find(params[:id])
     @booking.update(approved: :denied)
-    redirect_to bookings_path, notice: "Booking request denied."
+    redirect_to bookings_path, alert: "Booking request denied."
   end
 
   def index
