@@ -10,7 +10,20 @@
   </div>
   <div class="review-box">
       <div class="w-100">
-        <h3 style="text-align: center">Reviews</h3>
+        <h3 style="text-align: left">Reviews</h3>
+        <% unless imaginary_friend.reviews.count == 0 %>
+          <p>Average Rating:
+            <% sum = 0 %>
+            <% imaginary_friend.reviews.each do |review| %>
+              <% sum += review.rating %>
+            <% end %>
+            <% average_score = sum.to_f/imaginary_friend.reviews.count %>
+            <%= average_score.truncate(2) %>
+            <% average_score.round.times do %>
+              <i class="fa-solid fa-star" style="color: #F49D1A"></i>
+            <% end %>
+          </p>
+        <% end %>
       </div>
       <ul class="w-100">
         <% imaginary_friend.reviews.each do |review| %>
@@ -24,11 +37,16 @@
             <div class="w-100">
               <%= review.comment %>
             </div>
-            <% if review.user == current_user%>
-              <%= link_to "Delete your review",
-                          imaginary_friend_review_path(review),
-                          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-primary" %>
-            <% end %>
+            <div class="inner-flex">
+              <% if review.user == current_user %>
+                <%# <%= link_to "Edit", imaginary_friend_review_path(review), class:"buttons btn btn-primary" %>
+                <%= link_to 'Delete',
+                          imaginary_friend_review_path(review.imaginary_friend, review),
+                          data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class:"btn btn-warning" %>
+                <%# <%= button_to "delete", imaginary_friend_review_path(id: review.id, imaginary_friend_id: review.imaginary_friend.id), :method => :delete %>
+              <% end %>
+            </div>
+
           </li>
         <% end %>
       </ul>

@@ -2,8 +2,19 @@ class ImaginaryFriendsController < ApplicationController
   before_action :set_ifriend, only: %i[show update destroy edit]
 
   def index
-    #IN THE LIST OF ALL FRIENDS USER CAN SEE ONLY OTHER USERS FRIENDS
-    @imaginary_friends = ImaginaryFriend.all.reject { |friend| friend.user_id == current_user.id }
+    @imaginary_friends = ImaginaryFriend.all
+
+    @markers = @imaginary_friends.geocoded.map do |friend|
+      {
+        lat: friend.latitude,
+        lng: friend.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: { friend: friend })
+      }
+    end
+  end
+
+  def my_friends_index
+    @imaginary_friends = ImaginaryFriend.all.select { |friend| friend.user == current_user }
   end
 
   def show
@@ -48,7 +59,7 @@ class ImaginaryFriendsController < ApplicationController
   end
 
   def ifriend_params
-    params.require(:imaginary_friend).permit(:name, :description, :price, :special_abilities, :rented, :photo)
+    params.require(:imaginary_friend).permit(:name, :description, :price, :special_abilities, :rented, :photo, :address)
   end
 
   def booked_dates
