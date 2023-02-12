@@ -26,12 +26,13 @@
   <%end%>
 
   <% unless @imaginary_friend.user == current_user %>
+    <div data-controller="calendar" data-calendar-dates-value="<%= @disabled_dates.to_json %>" >
       <%= simple_form_for @booking do |f| %>
         <%= f.hidden_field :imaginary_friend_id, value: @imaginary_friend.id %>
         <%= f.hidden_field :user_id, value: current_user.id %>
         <div class="form-group">
           <%= f.label :start_date, "Start date" %>
-          <div class="input-group date" id="start-date-picker">
+          <div class="input-group date" id="start-date-picker" data-calendar-target="startDatePicker">
             <%= f.text_field :start_date, class: "form-control" %>
             <div class="input-group-append">
               <span class="input-group-text">
@@ -40,10 +41,9 @@
             </div>
           </div>
         </div>
-
         <div class="form-group">
           <%= f.label :end_date, "End date" %>
-          <div class="input-group date" id="end-date-picker">
+          <div class="input-group date" id="end-date-picker" data-calendar-target="endDatePicker">
             <%= f.text_field :end_date, class: "form-control" %>
             <div class="input-group-append">
               <span class="input-group-text">
@@ -52,10 +52,9 @@
             </div>
           </div>
         </div>
-
         <%= f.button :submit, class:"btn btn-primary" %>
       <% end %>
-
+    </div>
     <%= render 'new_review', imaginary_friend: @imaginary_friend %>
   <%else%>
     <%= link_to 'Edit this friend', edit_imaginary_friend_path, class:"btn btn-primary mb-2 mt-4"%>
