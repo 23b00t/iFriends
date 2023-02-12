@@ -10,6 +10,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to imaginary_friend_path(@imaginary_friend)
     else
+      # It's broken maybe only raise an alert?
       render 'imaginary_friends/show', status: :unprocessable_entity
     end
   end
