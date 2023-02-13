@@ -1,28 +1,33 @@
 <div class="container">
-  <h4>Bookings of your iFriends</h4>
-  <%@bookings.each do |booking| %>
-    <ul>
-      <% unless booking.denied? %>
-        <li>Imaginary Friend: <%=booking.imaginary_friend.name%></li>
-        <li>Renter: <%=booking.user.email %></li>
-        <li>Price: <%=booking.imaginary_friend.price%></li>
-        <li>Date: from: <%= booking.start_date %> to: <%= booking.end_date %></li>
-        <li>Status: <%= booking.approved %></li>
-        <% if booking.pending? %>
-          <%= link_to 'Accept booking', accept_booking_path(booking)  %>
-          <%= link_to 'Decline booking', decline_booking_path(booking)  %>
-        <% end %>
+  <div class="booking-container">
+    <div class="booking-box">
+      <h4 class="ps-2">Bookings of your iFriends</h4>
+      <%@bookings.each do |booking| %>
+        <ul class="card-booking">
+          <% unless booking.denied? %>
+            <li><strong> Imaginary Friend:</strong> <%=booking.imaginary_friend.name%></li>
+            <li><strong>Renter:</strong> <%=booking.user.email %></li>
+            <li><strong>Price:</strong> <%=booking.imaginary_friend.price%></li>
+            <li><strong>Date:</strong> from: <%= booking.start_date %> to: <%= booking.end_date %></li>
+            <li><strong>Status:</strong> <%= booking.approved %></li>
+            <% if booking.pending? %>
+              <%= link_to 'Accept booking', accept_booking_path(booking), class:"btn btn-outline-success m-2"  %>
+              <%= link_to 'Decline booking', decline_booking_path(booking), class:"btn btn-outline-danger m-2" %>
+            <% end %>
+          <% end %>
+        </ul>
       <% end %>
-    </ul>
-  <% end %>
-
-  <h4>Your requests and rents</h4>
-  <%@rents.each do |rent| %>
-    <ul>
-      <li>Imaginary Friend: <%=rent.imaginary_friend.name%></li>
-      <li>Owner: <%=rent.imaginary_friend.user.email %></li>
-      <li>Price: <%=rent.imaginary_friend.price%></li>
-      <li>Status: <%= rent.approved %></li>
-    </ul>
-  <% end %>
+    </div>
+    <div class="booking-box">
+      <h4 class="ps-2">Your requests and rents</h4>
+      <%@rents.each do |rent| %>
+        <ul class="card-booking">
+          <li><strong>Imaginary Friend:</strong> <%=rent.imaginary_friend.name%></li>
+          <li><strong>Owner:</strong> <%=rent.imaginary_friend.user.email %></li>
+          <li><strong>Price:</strong> <%=rent.imaginary_friend.price%></li>
+          <li><strong>Status:</strong> <%= rent.approved %></li>
+        </ul>
+      <% end %>
+    </div>
+  </div>
 </div>
