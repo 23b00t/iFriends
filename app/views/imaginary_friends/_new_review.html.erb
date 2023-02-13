@@ -19,8 +19,11 @@
             <% end %>
             <% average_score = sum.to_f/imaginary_friend.reviews.count %>
             <%= average_score.truncate(2) %>
-            <% average_score.round.times do %>
+            <% average_score.floor.times do %>
               <i class="fa-solid fa-star" style="color: #F49D1A"></i>
+            <% end %>
+            <% unless average_score.floor == average_score %>
+              <i class="fa-solid fa-star-half-stroke" style="color: #F49D1A; font-size: 14px"></i>
             <% end %>
           </p>
         <% end %>

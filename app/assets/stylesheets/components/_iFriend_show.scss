@@ -1,0 +1,13 @@
+.friend-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.friend-container img {
+  width: 400px;
+  height: auto;
+  max-width: 100%;
+  object-fit: cover;
+}
