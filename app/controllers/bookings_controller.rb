@@ -4,15 +4,11 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    @imaginary_friend = ImaginaryFriend.find(params[:booking][:imaginary_friend_id])
 
     if @booking.save
-      @imaginary_friend.booked ||= []
-      @imaginary_friend.booked << [params[:booking][:start_date], params[:booking][:end_date]]
-      @imaginary_friend.save
       redirect_to imaginary_friend_path(:imaginary_friend_id), notice: "Booking requested."
     else
-      render 'imaginary_friends/show', status: :unprocessable_entity
+      redirect_to imaginary_friend_path(:imaginary_friend_id), alert: "Booking not possible."
     end
   end
 
@@ -29,7 +25,7 @@ class BookingsController < ApplicationController
   def decline
     @booking = Booking.find(params[:id])
     @booking.update(approved: :denied)
-    redirect_to bookings_path, notice: "Booking request denied."
+    redirect_to bookings_path, alert: "Booking request denied."
   end
 
   def index
