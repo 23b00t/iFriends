@@ -1,7 +1,6 @@
-
 <div class='container'>
   <h1>Your imaginary friends – click into one to edit</h1>
-  <div class="d-flex flex-wrap justify-content-between gap-3 col-sm-12">
+  <div class="d-flex flex-wrap justify-content-start gap-3 col-sm-12">
       <% @imaginary_friends.each do |friend| %>
         <div class="card-friend" onclick="location.href='/imaginary_friends/<%=friend.id%>'" style="cursor:pointer">
           <% if friend.photo.attached? %>
