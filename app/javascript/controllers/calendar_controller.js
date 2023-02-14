@@ -11,18 +11,28 @@ export default class extends Controller {
   static targets = [ "startDatePicker", "endDatePicker" ]
 
   connect() {
-    $(this.startDatePickerTarget).datepicker({
+    const startDatePicker = $(this.startDatePickerTarget);
+    const endDatePicker = $(this.endDatePickerTarget);
+
+    startDatePicker.datepicker({
       format: "yyyy-mm-dd",
       todayHighlight: true,
       datesDisabled: this.datesValue,
-      startDate: new Date()
+      startDate: new Date(),
+      autoclose: true,
     });
 
-    $(this.endDatePickerTarget).datepicker({
+    endDatePicker.datepicker({
       format: "yyyy-mm-dd",
       todayHighlight: true,
       datesDisabled: this.datesValue,
-      startDate: new Date()
+      startDate: new Date(),
+      autoclose: true,
+    });
+
+    // Set the startDate of endDatePicker on changeDate of startDatePicker
+    startDatePicker.on("changeDate", function (e) {
+      endDatePicker.datepicker("setStartDate", e.date);
     });
   }
 }
