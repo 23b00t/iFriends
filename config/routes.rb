@@ -10,9 +10,9 @@ Rails.application.routes.draw do
       get :my_friends_index
     end
   end
-  resources :bookings, only: %i[create index show] do
+  resources :bookings, only: %i[create show] do
     member do
-      get :accept, :decline
+      get :accept, :decline, :my_bookings_index, :bookings_of_ifriends_index
     end
   end
 end

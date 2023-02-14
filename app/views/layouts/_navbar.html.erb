@@ -24,10 +24,14 @@
               <i class="fa-regular fa-user avatar dropdown-toggle pt-2" style="font-size: 20px" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
             <% end %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Add a new iFriend", new_imaginary_friend_path, class: "dropdown-item" %>
-              <%= link_to "My iFriends", my_friends_index_imaginary_friend_path(current_user), class: "dropdown-item" %>
-              <%# need to correct the link above %>
-              <%= link_to "My Bookings", bookings_path, class: "dropdown-item" %>
+              <%= link_to "My Bookings", my_bookings_index_booking_path(current_user), class: "dropdown-item" %>
+              <hr>
+              <%= link_to "Create a new iFriend", new_imaginary_friend_path, class: "dropdown-item" %>
+              <% if current_user.imaginary_friends.count > 0 %>
+                <%= link_to "My iFriends", my_friends_index_imaginary_friend_path(current_user), class: "dropdown-item" %>
+                <%= link_to "Bookings of my iFriends", bookings_of_ifriends_index_booking_path(current_user), class: "dropdown-item" %>
+              <% end %>
+              <hr>
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
           </li>
