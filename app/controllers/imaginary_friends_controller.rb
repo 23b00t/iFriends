@@ -52,6 +52,11 @@ class ImaginaryFriendsController < ApplicationController
     redirect_to imaginary_friends_path, status: :see_other
   end
 
+  def search
+    @query = params[:query]
+    @imaginary_friends = ImaginaryFriend.search_by_all(@query)
+  end
+
   private
 
   def set_ifriend

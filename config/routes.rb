@@ -9,6 +9,9 @@ Rails.application.routes.draw do
     member do
       get :my_friends_index
     end
+    collection do
+      get :search
+    end
   end
   resources :bookings, only: %i[create show] do
     member do

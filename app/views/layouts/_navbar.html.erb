@@ -8,6 +8,15 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
+    <div class="d-flex">
+      <%= form_tag search_imaginary_friends_path, method: :get do %>
+        <%= text_field_tag :query, nil, placeholder: "Search all friends" %>
+        <%= button_tag(type: 'submit', class: 'btn') do %>
+          <i class="fas fa-search"></i>
+        <% end %>
+      <% end %>
+    </div>
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
