@@ -8,15 +8,8 @@
   margin: 8px;
 }
 
-.review-container {
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-}
-
 .review-box {
   padding: 8px;
-  width: 50%;
 }
 
 @media only screen and (max-width: 767px) {

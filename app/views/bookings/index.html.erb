@@ -1,7 +1,7 @@
 <div class="container">
   <div class="booking-container">
     <div class="booking-box">
-      <h4 class="ps-2">Bookings of your iFriends</h4>
+      <h2 class="ps-2">Bookings of your iFriends</h2>
       <%@bookings.each do |booking| %>
         <ul class="card-booking">
           <% unless booking.denied? %>
@@ -19,7 +19,7 @@
       <% end %>
     </div>
     <div class="booking-box">
-      <h4 class="ps-2">Your requests and rents</h4>
+      <h2 class="ps-2">Your requests and rents</h2>
       <%@rents.each do |rent| %>
         <ul class="card-booking">
           <li><strong>Imaginary Friend:</strong> <%=rent.imaginary_friend.name%></li>

@@ -1,6 +1,6 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky-top mb-2">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky-top mb-3 pb-2">
   <div class="container-fluid container">
-    <%= link_to root_path, class: "navbar-brand" do %>
+    <%= link_to root_path, class: "navbar-brand rainbow-hover home-button-circle" do %>
       <i class="fa-solid fa-info"></i><i class="fa-solid fa-f"></i>
     <% end %>
 
@@ -17,7 +17,7 @@
           <%# <li class="nav-item">
             <%= link_to "Messages", "#", class: "nav-link" %>
           <%# </li> %>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown rainbow-hover menu-button-rounded">
             <% if current_user.photo.attached? %>
               <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <% else %>
@@ -36,7 +36,7 @@
             </div>
           </li>
         <% else %>
-          <li class="nav-item">
+          <li class="nav-item rainbow-hover">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
           </li>
         <% end %>

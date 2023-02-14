@@ -7,13 +7,22 @@
 }
 
 .approved {
-  background-color: rgb(45, 149, 62);
+  background-color: rgb(15, 186, 43);
 }
 
 .denied {
-  background-color: rgb(182, 38, 38);
+  background-color: rgb(225, 26, 26);
 }
 
 .pending {
-  background-color: darkkhaki;
+  background-color: rgb(195, 104, 0);
+}
+
+.special-ability-tag {
+  border-radius: 999px;
+  background-color: rgb(173, 48, 171);
+  color: white;
+  text-align: center;
+  padding: 0px 8px 0px 8px;
+  margin-top: 10px;
 }

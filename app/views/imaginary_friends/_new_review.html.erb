@@ -1,13 +1,16 @@
-<div class="review-container">
-  <div class="review-box">
-    <h3>Share your thoughts!</h3>
-    <%= simple_form_for [imaginary_friend, Review.new()] do |f| %>
-      <%= f.input :comment %>
-      <%= f.input :rating, collection: (1..5).to_a,
-      label: "Rate your experience", input_html: {data: {controller: "star-rating"}} %>
-      <%= f.submit 'Add', class: "btn-ghost", style: "width: 120px" %>
-    <% end %>
-  </div>
+<div class="review-container white-background-text">
+  <% unless @imaginary_friend.user == current_user %>
+    <div class="review-box">
+      <h3>Share your thoughts!</h3>
+      <%= simple_form_for [imaginary_friend, Review.new()] do |f| %>
+        <%= f.input :comment %>
+        <%= f.input :rating, collection: (1..5).to_a,
+        label: "Rate your experience", input_html: {data: {controller: "star-rating"}} %>
+        <%= f.submit 'Add', class: "btn-ghost", style: "width: 120px" %>
+      <% end %>
+    </div>
+  <% end %>
+
   <div class="review-box">
       <div class="w-100">
         <h3 style="text-align: left">Reviews</h3>
