@@ -11,7 +11,8 @@ class ReviewsController < ApplicationController
       redirect_to imaginary_friend_path(@imaginary_friend)
     else
       # It's broken maybe only raise an alert?
-      render 'imaginary_friends/show', status: :unprocessable_entity
+      # render 'imaginary_friends/show', status: :unprocessable_entity
+      redirect_to imaginary_friend_path(@imaginary_friend), alert: "Please put in a comment and a rating"
     end
   end
 
