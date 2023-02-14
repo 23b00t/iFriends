@@ -1,0 +1,40 @@
+// .page-background {
+//   background: rgb(34,251,255);
+//   background: linear-gradient(360deg, rgba(34,251,255,0.7861738445378151) 0%, rgba(255,82,253,0.8281906512605042) 35%, rgba(115,255,119,0.8590029761904762) 63%, rgba(255,255,255,1) 100%);
+
+// }
+.page-background {
+  background: rgb(117,215,13);
+  background: linear-gradient(90deg, rgba(117,215,13,1) 0%, rgba(205,21,202,1) 51%,
+                                      rgba(0,255,229,1) 100%);
+}
+
+.container {
+  width: 1200px;
+}
+
+.container h1{
+  background-color: white;
+  color: purple;
+  font-weight: bold;
+  border-radius: 20px;
+  padding: 5px 20px 5px 20px;
+  text-align: center;
+  margin: 5px 0px 10px 0px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.container .text-container{
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.white-background-text {
+  color: darkblue;
+  padding: 15px 20px 5px 20px;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  margin: 5px 0px 5px 0px;
+}

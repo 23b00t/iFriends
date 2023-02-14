@@ -1,5 +1,5 @@
 <div class='container'>
-  <h4>Your pending and approved bookings</h4>
+  <h1>Your pending and approved bookings</h1>
   <% unless @bookings.nil? %>
     <%= render "bookings", bookings: @bookings %>
   <% else %>

@@ -1,11 +1,12 @@
 // product card
 
 .card-friend {
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
   overflow: hidden;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  width: 300px;
-  border-radius: 10px;
+  width: 270px;
+  border-radius: 20px;
+  color: #0d0d93;
   // flex-grow: 1;
 }
 
