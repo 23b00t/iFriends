@@ -1,0 +1,27 @@
+<div class="container">
+  <h1 class="mb-4 mt-4">Search results for <%= @query %></h1>
+
+  <% if @imaginary_friends.present? %>
+    <div class="d-flex flex-wrap justify-content-start gap-3">
+      <% @imaginary_friends.each do |friend| %>
+        <div class="card-friend" onclick="location.href='/imaginary_friends/<%=friend.id%>'" style="cursor:pointer">
+          <% if friend.photo.attached? %>
+            <%= cl_image_tag friend.photo.key, crop: :fill %>
+          <% else %>
+            <%= image_tag("https://images.pexels.com/photos/140079/pexels-photo-140079.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1") %>
+          <% end %>
+          <div class="card-friend-infos">
+            <div>
+              <h2><%= friend.name %></h2>
+              <p><%= friend.description %> </p>
+            </div>
+            <h2 class="card-friend-pricing"><%= friend.price %> €</h2>
+            <%= cl_image_tag friend.user.photo.key, class: "card-friend-user avatar-bordered", crop: :fill, gravity: :face if friend.user.photo.attached? %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p> No imaginary friends found </p>
+  <% end %>
+</div>

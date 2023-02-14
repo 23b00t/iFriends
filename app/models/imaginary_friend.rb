@@ -9,6 +9,14 @@ class ImaginaryFriend < ApplicationRecord
   validates :name, presence: true
   validates :name, uniqueness: { scope: :user_id }
   validates :price, presence: true
+
+  include PgSearch::Model
+  pg_search_scope :search_by_all,
+                  against: %i[name description special_abilities address price],
+                  using: {
+                    tsearch: { prefix: true }
+                  }
+
   # validates :special_abilities, inclusion: { in: ["Flying", "Warm hugs", "Invisibility", "Visibility",
                                                   # "Cooking", "Great advice"],
                                                   # message: "%<category> is not a valid category.
