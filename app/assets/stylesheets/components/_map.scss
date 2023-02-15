@@ -1,9 +1,10 @@
-.map {                //map class for div in index
+.map {
+  overflow: hidden;               //map class for div in index
   margin-left: 70%;
   margin-right: 10px;
   padding: 5px;
   justify-content: center;
-
+  z-index: 50;
 }
 
 .mapboxgl-popup {
