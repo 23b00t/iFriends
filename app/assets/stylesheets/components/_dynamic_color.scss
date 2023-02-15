@@ -1,0 +1,8 @@
+:root {
+  --gradient_angle: 90deg;
+}
+
+.dynamic_background_color {
+  background: linear-gradient(var(--gradient_angle), rgba(0,255,229,1) 0%, rgba(205,21,202,1) 51%,
+                                      rgba(117,215,13,1) 100%);
+}
