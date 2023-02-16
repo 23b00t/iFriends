@@ -1,15 +1,16 @@
 .card-review {
-  border-radius: 5px;
   overflow: hidden;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
   margin-bottom: 16px;
   width: 100%;
-  margin: 8px;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  // border-top: solid 1px lightgray;
 }
 
 .review-box {
   padding: 8px;
+  padding-left: 0px;
 }
 
 @media only screen and (max-width: 767px) {

@@ -1,20 +1,22 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky-top mb-3 pb-2">
   <div class="container-fluid container">
-    <%= link_to root_path, class: "navbar-brand rainbow-hover home-button-circle" do %>
-      <i class="fa-solid fa-info"></i><i class="fa-solid fa-f"></i>
-    <% end %>
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="d-flex">
-      <%= form_tag search_imaginary_friends_path, method: :get do %>
-        <%= text_field_tag :query, nil, placeholder: "Search all friends" %>
-        <%= button_tag(type: 'submit', class: 'btn') do %>
-          <i class="fas fa-search"></i>
-        <% end %>
+    <div class='d-flex justify-content-start align-items-center'>
+      <%= link_to root_path, class: "navbar-brand rainbow-btn home-button-circle" do %>
+        <i class="fa-solid fa-info"></i><i class="fa-solid fa-f"></i>
       <% end %>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="d-flex">
+        <%= form_tag search_imaginary_friends_path, method: :get do %>
+          <%= text_field_tag :query, nil, placeholder: "Search all friends" %>
+          <%= button_tag(type: 'submit', class: 'search-btn-small') do %>
+            <i class="fas fa-search"></i>
+          <% end %>
+        <% end %>
+      </div>
     </div>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -26,7 +28,7 @@
           <%# <li class="nav-item">
             <%= link_to "Messages", "#", class: "nav-link" %>
           <%# </li> %>
-          <li class="nav-item dropdown rainbow-hover menu-button-rounded">
+          <li class="nav-item dropdown rainbow-btn menu-button-rounded">
             <% if current_user.photo.attached? %>
               <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <% else %>
@@ -45,7 +47,7 @@
             </div>
           </li>
         <% else %>
-          <li class="nav-item rainbow-hover">
+          <li class="nav-item rainbow-btn">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
           </li>
         <% end %>

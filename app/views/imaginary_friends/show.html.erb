@@ -1,7 +1,7 @@
 <div class="container">
   <div class="friend-container">
     <%# Description %>
-    <div class="mb-4">
+    <div class="mb-4 friend-show-info">
       <h1>Imaginary Friend: <%=@imaginary_friend.name%></h1>
       <div class="white-background-text">
         <% if @imaginary_friend.special_abilities %>
@@ -19,11 +19,11 @@
     </div>
 
     <%# Booking box or actions box %>
-    <div class='white-background-text'>
+    <div class='white-background-text booking-box'>
       <h4>€<%=@imaginary_friend.price%>/day</h4>
       <% if current_user && current_user == @imaginary_friend.user%>
         <%= link_to 'Edit this friend', edit_imaginary_friend_path, class:"btn btn-pink-edit mb-4"%>
-        <%= link_to "Remove this imaginary friend",
+        <%= link_to "Remove this friend",
           imaginary_friend_path(@imaginary_friend),
           data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-delete mb-4" %>
       <% else %>
