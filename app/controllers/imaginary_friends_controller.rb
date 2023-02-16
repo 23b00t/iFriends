@@ -54,7 +54,8 @@ class ImaginaryFriendsController < ApplicationController
 
   def search
     @query = params[:query]
-    @imaginary_friends = ImaginaryFriend.search_by_all(@query)
+    sql_query = "name ILIKE :query OR description ILIKE :query"
+    @imaginary_friends = ImaginaryFriend.where(sql_query, query: "%#{params[:query]}%")
   end
 
   private
