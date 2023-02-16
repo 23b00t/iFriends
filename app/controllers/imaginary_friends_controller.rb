@@ -20,6 +20,7 @@ class ImaginaryFriendsController < ApplicationController
   def show
     @booking = Booking.new
     @bookings = Booking.where('imaginary_friend_id = ?', params[:id]).approved
+    # raise
     @disabled_dates = booked_dates
   end
 

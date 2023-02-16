@@ -1,5 +1,11 @@
 <div class="review-container white-background-text">
-  <% unless @imaginary_friend.user == current_user %>
+  <% bookings = imaginary_friend.bookings.select { |booking| booking.approved == 1 } %>
+  <% customers = bookings.map { |booking| booking.user } %>
+  <% reviewers = imaginary_friend.reviews.map { |review| review.user }%>
+
+  <% if reviewers.include? current_user %>
+    <h3>Thanks for sharing your thoughts - see your review and others below!</h3>
+  <% elsif imaginary_friend.user != current_user and customers.include? current_user %>
     <div class="review-box">
       <h3>Share your thoughts!</h3>
       <%= simple_form_for [imaginary_friend, Review.new()] do |f| %>
@@ -13,7 +19,7 @@
 
   <div class="review-box">
       <div class="w-100">
-        <h3 style="text-align: left">Reviews</h3>
+        <h3>Reviews</h3>
         <% unless imaginary_friend.reviews.count == 0 %>
           <p>Average Rating:
             <% sum = 0 %>
@@ -28,33 +34,60 @@
             <% unless average_score.floor == average_score %>
               <i class="fa-solid fa-star-half-stroke" style="color: #F49D1A; font-size: 14px"></i>
             <% end %>
+            <%= "(#{imaginary_friend.reviews.count})" %>
           </p>
         <% end %>
       </div>
-      <ul class="w-100">
+      <div class="w-100 d-flex flex-wrap">
         <% imaginary_friend.reviews.each do |review| %>
-          <li class="mb-2 d-flex flex-wrap card-review">
-            <div class="w-100" data-controller="star-rating">
-              <% review.rating.times do %>
-                <i class="fa-solid fa-star" style="color: #F49D1A"></i>
-              <% end %>
-              <small class="text-muted">posted <%= time_ago_in_words(review.created_at) %> ago</small>
-            </div>
-            <div class="w-100">
-              <%= review.comment %>
-            </div>
-            <div class="inner-flex">
-              <% if review.user == current_user %>
-                <%# <%= link_to "Edit", imaginary_friend_review_path(review), class:"buttons btn btn-primary" %>
-                <%= link_to 'Delete',
-                          imaginary_friend_review_path(review.imaginary_friend, review),
-                          data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class:"btn btn-warning" %>
-                <%# <%= button_to "delete", imaginary_friend_review_path(id: review.id, imaginary_friend_id: review.imaginary_friend.id), :method => :delete %>
-              <% end %>
-            </div>
+          <%# Review Box %>
+              <div class="w-50 d-flex card-review" data-controller="star-rating">
+                <%# User photo %>
+                  <% if review.user.photo.attached? %>
+                    <%= cl_image_tag review.user.photo.key, class: "card-friend-user avatar-review pr-5",
+                                                            crop: :fill, gravity: :face %>
+                  <% else %>
+                    <div style="padding-right:10px;">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                      </svg>
+                    </div>
+                  <% end %>
 
-          </li>
+                <%# Review Information %>
+                  <div class='w-100' style="padding-right:25px;">
+                    <%# Review details & delete button %>
+                      <div class='pb-2 d-flex justify-content-between'>
+                        <%# Post time, name, stars %>
+                        <div>
+                          <%= review.user.first_name %>
+                          <br>
+                          <small class="text-muted"><%= time_ago_in_words(review.created_at) %> ago</small>
+                          <br>
+                          <% review.rating.times do %>
+                            <i class="fa-solid fa-star" style="color: #F49D1A"></i>
+                          <% end %>
+                        </div>
+
+                        <%# Delete button %>
+                        <% if review.user == current_user %>
+                          <%= link_to imaginary_friend_review_path(review.imaginary_friend, review),
+                                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}  do %>
+                                  <i class="fa-regular fa-trash-can"></i>
+                                <% end %>
+                        <% end %>
+
+                      </div>
+
+                    <%# Review Comment %>
+                      <div class="w-100">
+                        <%= review.comment %>
+                      </div>
+
+                  </div>
+              </div>
         <% end %>
-      </ul>
+      </div>
   </div>
 </div>
