@@ -54,7 +54,7 @@ class ImaginaryFriendsController < ApplicationController
   end
 
   def search
-    ImaginaryFriend.reindex
+    ImaginaryFriend.reindex!
     @query = params[:query]
     @imaginary_friends = ImaginaryFriend.search(@query)
   end

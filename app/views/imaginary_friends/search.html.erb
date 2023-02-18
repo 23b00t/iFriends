@@ -21,8 +21,12 @@
         </div>
       <% end %>
     </div>
+    <div class="item" style="flex: 5">
+    </div>
   <% else %>
     <p> No imaginary friends found </p>
+    <div class="item" style="flex: 5">
+    </div>
   <% end %>
 </div>
 
@@ -31,7 +35,7 @@
     <div style="width: 100%; height: 600px;"
       data-controller="map"
       data-map-markers-value="<%= @markers.to_json %>"
-      data-map-api-key-value="pk.eyJ1Ijoic2ViaWJhc3RpIiwiYSI6ImNsYm1tdHZ3aDA2NHozb28zdWczb245MmQifQ.6MsyKtb82cmRPhPpZVM8Aw">
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
     </div>
   </div>
 <% end %>
