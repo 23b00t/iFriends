@@ -65,3 +65,37 @@
   background-color: #4927a7;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+
+.btn-accept {
+  text-decoration: none;
+  border-radius: 20px;
+  border: none;
+  color: white;
+  background-color: #75d60f;
+  padding: 5px 10px;
+  margin-right: 10px;
+  font-weight: 300;
+}
+
+.btn-accept:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background: #caedca;
+  color: darkgreen;
+}
+
+.btn-decline {
+  background-color: #dc2222;
+  text-decoration: none;
+  border-radius: 20px;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  margin-right: 10px;
+  font-weight: 300;
+}
+
+.btn-decline:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background-color: #f78282;
+  color: rgb(98, 6, 6);
+}
