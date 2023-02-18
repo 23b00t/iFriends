@@ -84,3 +84,7 @@ group :test do
 end
 
 gem "geocoder"
+
+gem "algoliasearch-rails"
+
+gem "will_paginate"
