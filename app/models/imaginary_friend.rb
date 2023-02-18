@@ -1,4 +1,13 @@
 class ImaginaryFriend < ApplicationRecord
+
+  include AlgoliaSearch
+
+  algoliasearch do
+    attributes :name, :description
+    minWordSizefor1Typo 4
+    minWordSizefor2Typos 8
+  end
+
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
