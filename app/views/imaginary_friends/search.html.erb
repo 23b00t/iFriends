@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 class="mb-4 mt-4">Search results for <%= @query %></h1>
+  <h1 class="mb-4 mt-4";>Search results for <%= @query %></h1>
 
   <% if @imaginary_friends.present? %>
     <div class="d-flex flex-wrap justify-content-start gap-3">
@@ -25,3 +25,13 @@
     <p> No imaginary friends found </p>
   <% end %>
 </div>
+
+<% if @imaginary_friends.present? %>
+  <div class="map sticky-bottom">
+    <div style="width: 100%; height: 600px;"
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="pk.eyJ1Ijoic2ViaWJhc3RpIiwiYSI6ImNsYm1tdHZ3aDA2NHozb28zdWczb245MmQifQ.6MsyKtb82cmRPhPpZVM8Aw">
+    </div>
+  </div>
+<% end %>

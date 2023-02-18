@@ -53,9 +53,9 @@ class ImaginaryFriendsController < ApplicationController
   end
 
   def search
+    ImaginaryFriend.reindex
     @query = params[:query]
-    sql_query = "name ILIKE :query OR description ILIKE :query"
-    @imaginary_friends = ImaginaryFriend.where(sql_query, query: "%#{params[:query]}%")
+    @imaginary_friends = ImaginaryFriend.search(@query)
   end
 
   private

@@ -4,6 +4,8 @@ class ImaginaryFriend < ApplicationRecord
 
   algoliasearch do
     attributes :name, :description
+    minWordSizefor1Typo 4
+    minWordSizefor2Typos 8
   end
 
   geocoded_by :address
