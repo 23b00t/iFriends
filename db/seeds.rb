@@ -47,16 +47,18 @@ users << user3
 p "user3 created"
 p '________________________________________________________________________________'
 
-p 'create imaginary friends'
+p 'create a lot imaginary friends (52) which takes a while'
 4.times do |i|
   14.times do
     imaginary_friend = ImaginaryFriend.create(
       user: users[i],
       name: Faker::Fantasy::Tolkien.character,
       description: Faker::Quote.famous_last_words,
-      price: rand(5000),
+      price: rand(500),
       special_abilities: Faker::Superhero.power,
-      address: Faker::Address.full_address
+      address: Faker::Address.full_address,
+      latitude: Faker::Address.latitude,
+      longitude: Faker::Address.longitude
     )
     file = URI.open(Faker::Avatar.image)
     imaginary_friend.photo.attach(io: file, filename: imaginary_friend.name, content_type: "image/jpg")
