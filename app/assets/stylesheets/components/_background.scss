@@ -20,7 +20,14 @@
   border-radius: 20px;
   padding: 5px 20px 5px 20px;
   text-align: center;
-  margin: 10px 0px 10px 0px;
+  margin: 20px 0px 20px 0px;
+  box-shadow: rgb(85, 91, 255) 0px 0px 0px 3px, rgb(31, 193, 27) 0px 0px 0px 6px, rgb(255, 217, 19) 0px 0px 0px 9px, rgb(255, 156, 85) 0px 0px 0px 12px, rgb(255, 85, 85) 0px 0px 0px 15px;
+}
+
+.container.mb-5 h1 {
+  position: sticky;
+  top: 80px;
+  z-index: 1;
 }
 
 .container .text-container{
