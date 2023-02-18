@@ -2,7 +2,7 @@
   <div class="friend-container">
     <%# Description %>
     <div class="friend-show-info">
-      <%= cl_image_tag @imaginary_friend.photo.key, class:"w-100" if @imaginary_friend.photo.attached? %>
+      <%= cl_image_tag @imaginary_friend.photo.key, class:"w-100 h-50" if @imaginary_friend.photo.attached? %>
       <h1>Imaginary Friend: <%=@imaginary_friend.name%></h1>
       <div class="white-background-text">
         <% if @imaginary_friend.special_abilities %>
