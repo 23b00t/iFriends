@@ -22,25 +22,25 @@ p '_____________________________________________________________________________
 users = []
 
 p 'create users'
-user0 = User.create(email: "daniel@test.com", first_name: "User", last_name: "Name", password: "password")
+user0 = User.create(email: "daniel@test.com", first_name: "Daniel", last_name: "Name", password: "password")
 file = URI.open(Faker::Avatar.image)
 user0.photo.attach(io: file, filename: user0.first_name, content_type: "image/jpg")
 users << user0
 p "user0 created"
 
-user1 = User.create(email: "kroner@test.com", first_name: "User", last_name: "Name", password: "password")
+user1 = User.create(email: "kroner@test.com", first_name: "Kroner", last_name: "Name", password: "password")
 file = URI.open(Faker::Avatar.image)
 user1.photo.attach(io: file, filename: user1.first_name, content_type: "image/jpg")
 users << user1
 p "user1 created"
 
-user2 = User.create(email: "michael@test.com", first_name: "User", last_name: "Name", password: "password")
+user2 = User.create(email: "michael@test.com", first_name: "Michael", last_name: "Name", password: "password")
 file = URI.open(Faker::Avatar.image)
 user2.photo.attach(io: file, filename: user2.first_name, content_type: "image/jpg")
 users << user2
 p "user2 created"
 
-user3 = User.create(email: "erman@test.com", first_name: "User", last_name: "Name", password: "password")
+user3 = User.create(email: "erman@test.com", first_name: "Erman", last_name: "Name", password: "password")
 file = URI.open(Faker::Avatar.image)
 user3.photo.attach(io: file, filename: user3.first_name, content_type: "image/jpg")
 users << user3
@@ -53,7 +53,7 @@ p 'create a lot imaginary friends (52) which takes a while'
     imaginary_friend = ImaginaryFriend.create(
       user: users[i],
       name: Faker::Fantasy::Tolkien.character,
-      description: Faker::Quote.famous_last_words,
+      description: Faker::Lorem.paragraph(sentence_count: 7, supplemental: true),
       price: rand(500),
       special_abilities: Faker::Superhero.power,
       address: Faker::Address.full_address,
