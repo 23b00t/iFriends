@@ -1,10 +1,13 @@
-<div class="review-container white-background-text">
+<div class="white-background-text">
   <% bookings = imaginary_friend.bookings.select { |booking| booking.approved == 1 } %>
   <% customers = bookings.map { |booking| booking.user } %>
   <% reviewers = imaginary_friend.reviews.map { |review| review.user }%>
 
+  <%# Current User already left a review %>
   <% if reviewers.include? current_user %>
     <h3>Thanks for sharing your thoughts - see your review and others below!</h3>
+
+  <%#  Current user has an approved booking, hasn't left a review%>
   <% elsif imaginary_friend.user != current_user and customers.include? current_user %>
     <div class="review-box">
       <h3>Share your thoughts!</h3>
@@ -17,10 +20,13 @@
     </div>
   <% end %>
 
+  <%# Visible to everyone%>
   <div class="review-box">
       <div class="w-100">
         <h3>Reviews</h3>
-        <% unless imaginary_friend.reviews.count == 0 %>
+        <% if imaginary_friend.reviews.count == 0 %>
+          <em>No reviews yet!</em>
+        <% else %>
           <p>Average Rating:
             <% sum = 0 %>
             <% imaginary_friend.reviews.each do |review| %>

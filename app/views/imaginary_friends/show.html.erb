@@ -32,7 +32,14 @@
     </div>
   </div>
 
-  <div>
-    <%= render 'new_review', imaginary_friend: @imaginary_friend %>
-  </div>
+  <%# Bookings %>
+  <% if current_user && @imaginary_friend.user == current_user %>
+    <% bookings = @imaginary_friend.bookings.select { |booking| booking.approved == 'pending' } %>
+    <% if bookings.count > 0 %>
+      <%= render 'pending_bookings', imaginary_friend: @imaginary_friend, bookings: bookings %>
+    <% end %>
+  <% end %>
+
+  <%# Reviews %>
+  <%= render 'new_review', imaginary_friend: @imaginary_friend %>
 </div>

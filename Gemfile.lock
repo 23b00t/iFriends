@@ -95,6 +95,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
+    chronic (0.10.2)
     cloudinary (1.25.0)
       aws_cf_signer
       rest-client (>= 2.0.0)
@@ -282,6 +283,7 @@ DEPENDENCIES
   bootsnap
   bootstrap-datepicker-rails
   capybara
+  chronic
   cloudinary
   debug
   devise

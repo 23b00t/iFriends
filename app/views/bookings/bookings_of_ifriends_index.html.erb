@@ -1,5 +1,26 @@
-<div class='container'>
-  <h1>Pending Bookings</h1>
-  <%= render "bookings", bookings: @bookings %>
+<div class='container mb-5'>
+  <% pending =  @bookings.select { |booking| booking.approved == 'pending'} %>
+  <% denied =  @bookings.select { |booking| booking.approved == 'denied'} %>
+  <% approved =  @bookings.select { |booking| booking.approved == 'approved'} %>
 
+  <% if @bookings.count > 0 %>
+
+    <% if pending.count > 0 %>
+      <h1>Pending Bookings</h1>
+      <%= render "bookings", bookings: pending %>
+    <% end %>
+
+    <% if approved.count > 0 %>
+      <h1 style="margin-top: 20px">Approved Bookings</h1>
+      <%= render "bookings", bookings: approved %>
+    <% end %>
+
+    <% if denied.count > 0 %>
+      <h1 style="margin-top: 20px; margin-bottom: 20px;">Denied Bookings</h1>
+      <%= render "bookings", bookings: denied %>
+    <% end %>
+
+  <% else %>
+    <p>No bookings yet!</p>
+  <% end %>
 </div>

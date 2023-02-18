@@ -19,18 +19,17 @@ class BookingsController < ApplicationController
   def accept
     @booking = Booking.find(params[:id])
     @booking.update(approved: :approved)
-    redirect_to bookings_path, notice: "Booking request accepted."
+    redirect_to imaginary_friend_path(@booking.imaginary_friend), notice: "Booking request accepted."
   end
 
   def decline
     @booking = Booking.find(params[:id])
     @booking.update(approved: :denied)
-    redirect_to bookings_path, alert: "Booking request denied."
+    redirect_to imaginary_friend_path(@booking.imaginary_friend), alert: "Booking request denied."
   end
 
   def index
     @bookings = Booking.all.select { |booking| booking.imaginary_friend.user == current_user }
-    @rents = Booking.all.select { |booking| booking.user == current_user }
   end
 
   def my_bookings_index
