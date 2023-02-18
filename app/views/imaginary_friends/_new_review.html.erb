@@ -1,5 +1,5 @@
 <div class="white-background-text">
-  <% bookings = imaginary_friend.bookings.select { |booking| booking.approved == 1 } %>
+  <% bookings = imaginary_friend.bookings.select { |booking| booking.approved == 'approved' } %>
   <% customers = bookings.map { |booking| booking.user } %>
   <% reviewers = imaginary_friend.reviews.map { |review| review.user }%>
 
