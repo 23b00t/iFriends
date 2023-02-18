@@ -6,7 +6,7 @@ class ImaginaryFriendsController < ApplicationController
 
     @markers = @imaginary_friends.geocoded.map do |friend|
       {
-        lat: friend.latitude,
+        lat:  friend.latitude,
         lng: friend.longitude,
         info_window_html: render_to_string(partial: "info_window", locals: { friend: friend })
       }
@@ -57,6 +57,13 @@ class ImaginaryFriendsController < ApplicationController
     ImaginaryFriend.reindex!
     @query = params[:query]
     @imaginary_friends = ImaginaryFriend.search(@query)
+    @markers = @imaginary_friends.map do |friend|
+      {
+        lat:  friend.latitude,
+        lng: friend.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: { friend: friend })
+      }
+    end
   end
 
   private
