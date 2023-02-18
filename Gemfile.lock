@@ -139,7 +139,6 @@ GEM
     faraday-net_http_persistent (2.1.0)
       faraday (~> 2.5)
       net-http-persistent (~> 4.0)
-
     ffi (1.15.5)
     font-awesome-sass (6.2.1)
       sassc (~> 2.0)
