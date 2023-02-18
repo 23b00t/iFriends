@@ -1,7 +1,10 @@
-<div class="container">
-  <h1 class="mb-4 mt-4";>Search results for <%= @query %></h1>
 
-  <% if @imaginary_friends.present? %>
+<div class="container d-flex flex-row justify-content-start">
+  <div class="item" style="flex: 15">
+  <h1 class="mb-4 mt-4";>Search results for <%= @query %></h1>
+  <% unless @imaginary_friends.present? %>
+  <p class="mb-4 mt-4">Nothing was found</p>
+  <% end %>
     <div class="d-flex flex-wrap justify-content-start gap-3">
       <% @imaginary_friends.each do |friend| %>
         <div class="card-friend" onclick="location.href='/imaginary_friends/<%=friend.id%>'" style="cursor:pointer">
@@ -21,21 +24,15 @@
         </div>
       <% end %>
     </div>
-    <div class="item" style="flex: 5; position: sticky;">
-    </div>
-  <% else %>
-    <p> No imaginary friends found </p>
-    <div class="item" style="flex: 5; position: sticky;">
-    </div>
-  <% end %>
+  </div>
+  <div class="item" style="flex: 5; position: sticky;">
+  </div>
 </div>
 
-<% if @imaginary_friends.present? %>
-  <div class="map sticky-bottom">
-    <div style="width: 100%; height: 600px;"
-      data-controller="map"
-      data-map-markers-value="<%= @markers.to_json %>"
-      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-    </div>
+<div class="map sticky-bottom">
+  <div style="width: 100%; height: 600px;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
   </div>
-<% end %>
+ </div>
