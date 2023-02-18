@@ -16,8 +16,10 @@
 }
 
 .booking-box {
-  padding: 40px;
   width: 50%;
+  height: 300px;
+  position: sticky;
+  top: 70px;
 }
 
 @media only screen and (max-width: 767px) {
